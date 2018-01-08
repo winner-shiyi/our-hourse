@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>demo-jq</title>
+	<style>
+		p {
+			background: yellow;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 5px;
+		}
+
+		p.over {
+			background: #ccc;
+		}
+
+		span {
+			color: red;
+		}
+	</style>
+	<!-- <script src="./juqery1.0.js"></script> -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+	<div class="parent">
+		<div class="child">第1个女儿</div>
+		<div class="child">第2个女儿</div>
+		<div class="child">第3个女儿</div>
+	</div>
+	<button id="btn">生女儿</button>
+	<script>
+		var i = 4;
+		// 第一种：
+		// $(".parent .child").click(() => { 
+		// 	alert("我是你女儿")
+		// })
+		// 第二种：
+		// $(".parent .child").bind("click", () => {
+		// 	alert("我是你女儿")
+		// })
+		// 第三种：
+		$(".parent").on("click", ".child", () => {
+			alert("我是你女儿");
+		})
+
+		$("#btn").click(() => {
+			$(".parent").append("<div class='child'>第" + (i++) + "个女儿</div>");
+		})
+	</script>
+</body>
+
+</html>

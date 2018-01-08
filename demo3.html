@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>demo-jq</title>
+	<style>
+		p {
+			background: yellow;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 5px;
+		}
+
+		p.over {
+			background: #ccc;
+		}
+
+		span {
+			color: red;
+		}
+	</style>
+	<!-- <script src="./juqery1.0.js"></script> -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+	<!-- <div class="wrap" style="width:500px;height: 300px;background: red;margin: 0 auto;">
+		<div class="cccc" style="width:300px;height: 200px;background: blue;margin: 0 auto;">
+			<div class="bbbb" style="width:100px;height: 100px;background: green;margin: 0 auto;">
+			</div>
+		</div>
+	</div> -->
+
+	<div id="big" style="width:500px;height: 300px;background: red;margin: 0 auto;">
+		<div id="middle" style="width:300px;height: 200px;background: blue;margin: 0 auto;">
+			<div id="small" style="width:100px;height: 100px;background: green;margin: 0 auto;"></div>
+		</div>
+	</div>
+	<script>
+		// $('.wrap').click(() => {
+		// 	alert('wrap')
+		// })
+		// $('.cccc').click((e) => {
+		// 	e.stopPropagation()
+		// 	alert('cccc')
+		// })
+		// $('.bbbb').click(() => {
+		// 	alert('bbbb')
+		// })
+		$(document).on("click", '#big', () => {
+			alert("document big");
+		})
+		.on("click", '#middle', (e) => {
+			e.stopPropagation();
+			alert("document middle");
+		})
+		.on("click", '#small', () => {
+			alert("document small");
+		});
+
+		$('#big').click(() => {
+			alert("big");
+		});
+		// 点击 #middle的时候，先弹big，在弹出document middle
+		// 原因：#middle上没有绑定事件，
+		// 事件冒泡到#big --> #big 绑定了click事件，会立即执行，弹出big
+		// 冒泡到body --> 冒泡到html --> 最后冒泡到document上
+		// document上有绑定事件，又因为事件源是#middle，所以过滤掉#small的委托处理，
+		// 剩下两个委托（"#middle"委托处理和"#big"委托处理）需要处理，
+		// 先处理"#middle"委托处理，弹出document middle，因为这里有阻止事件冒泡，所以#big后续委托被阻止了，没有弹出document big
+	</script>
+</body>
+
+</html>

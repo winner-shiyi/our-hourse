@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>demo-jq</title>
+	<style>
+		p {
+			background: yellow;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 5px;
+		}
+
+		p.over {
+			background: #ccc;
+		}
+
+		span {
+			color: red;
+		}
+	</style>
+	<!-- <script src="./juqery1.0.js"></script> -->
+	 <!-- <script src="http://code.jquery.com/jquery-latest.js"></script>  -->
+	 <script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+</head>
+
+<body>
+	<div id='p1' style="width: 500px;height: 500px;background: #ccc">点击d
+		<div id='p2' style="width: 300px;height: 300px;background: #a9ea00">点击c
+			<p id="p3" style="width: 100px;height: 100px;background: red" id="test">点击b
+				<a id="p4" style="width: 50px;height: 50px;background: cornflowerblue" id="test">点击a</a>
+			</p>
+		</div>
+	</div>
+
+	<script>
+		var p1 = $('#p1')
+
+		p1.on('click', function () {
+			alert('灰')
+		})
+
+
+		var p2 = $('#p2')
+		
+		// 有没有selecter差别很大，会先走下面的
+		// p2上绑定事件click
+		p2.on('click', function (e) {
+			alert('默认事件1')
+		})
+
+		// p2上委托事件
+		p2.on('click', '#p3,#p4', function (e) {
+			console.log(e)
+			alert(e.currentTarget.nodeName)
+		})
+
+		var p3 = $('#p3')
+		p3.on('click', function () {
+			alert('红')
+		})
+
+		// 元素本身有事件
+
+		// 元素又要处理委托事件
+
+		// 那么事件的执行就需要有个先后，jQuery要如何排序呢？
+
+		// 依赖委托节点在DOM树的深度安排优先级，委托的DOM节点层次越深，其执行优先级越高
+		// on绑定从队列头部推入，而普通绑定从尾部推入，通过记录delegateCount来划分，delegate绑定和普通绑定。
+	</script>
+</body>
+
+</html>
