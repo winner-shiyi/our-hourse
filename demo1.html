@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>事件冒泡</title>
+	<style>
+		*{padding:0;margin:0}
+		body{width:1000px;height:800px;padding-top: 100px;}
+	</style>
+	<script src="./jquery-1.9.1.js"></script> 
+	<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+</head>
+
+<body>
+	<div class="wrap" style="width:500px;height: 300px;background: red;margin: 0 auto;">
+		<div class="middle" style="width:300px;height: 200px;background: blue;margin: 0 auto;">
+			<div class="small" style="width:100px;height: 100px;background: green;margin: 0 auto;">
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.wrap').click(() => {
+			alert('红')
+		})
+		$('.middle').click((e) => {
+			// e.stopPropagation()
+			alert('蓝')
+		})
+		$('.small').click(() => {
+			alert('绿')
+		})
+	</script>
+</body>
+
+</html>

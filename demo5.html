@@ -5,14 +5,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>demo-jq</title>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<title>事件委托-事件冒泡综合使用</title>
+	<style>
+		*{padding:0;margin:0}
+		body{width:1000px;height:800px;padding-top: 100px;}
+	</style>
+	<script src="./jquery-1.9.1.js"></script> 
+	<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 </head>
 <body>
-
-	<div id="big" style="width:500px;height: 300px;background: red;margin: 0 auto;">
-		<div id="middle" style="width:300px;height: 200px;background: blue;margin: 0 auto;">
-			<div id="small" style="width:100px;height: 100px;background: green;margin: 0 auto;"></div>
+	<div id="big" style="width:500px;height: 300px;background: red;margin: 0 auto;">big
+		<div id="middle" style="width:300px;height: 200px;background: blue;margin: 0 auto;">middle
+			<div id="small" style="width:100px;height: 100px;background: green;margin: 0 auto;">small</div>
 		</div>
 	</div>
 	<script>

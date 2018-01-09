@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>事件对象event</title>
+	<style>
+		p {
+			background: yellow;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 5px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+	<div id="wrapId1">
+		<p id="free">我是使用原生绑定click事件的原生P<span></span></p>
+	</div>
+	<div id="wrapId2">
+		<p id="jquery">我是使用jquery绑定click事件的简洁P</p>
+	</div>
+	<script>
+		document.getElementById('wrapId1').addEventListener('click',function(e) {
+			console.log(e)
+		})
+
+		$('#wrapId2').click((e) => {
+			console.log(e)
+		})
+
+		
+	</script>
+</body>
+
+</html>

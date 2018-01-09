@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>事件委托-元素本身有事件，同时又有被委托事件</title>
+	<style>
+		*{padding:0;margin:0}
+		body{width:1000px;height:800px;padding-top: 100px;margin:0 auto;}
+		.parent{width:500px;height:500px;border: 1px solid red;padding: 20px;}
+		#btn{width: 100px;height: 40px;margin-top: 10px;font-size: 20px;}
+		.child{line-height:40px;}
+	</style>
+	<script src="./jquery-1.9.1.js"></script> 
+	<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>  -->
+</head>
+
+<body>
+	<div id='p1' style="width: 500px;height: 500px;background: #ccc">点击灰
+		<div id='p2' style="width: 400px;height: 400px;background: #a9ea00">点击绿
+			<p id="p3" style="width: 300px;height: 300px;background: red" id="test">点击红
+				<a id="p4" style="width: 100px;height: 100px;background: cornflowerblue" id="test">点击粉蓝</a>
+			</p>
+		</div>
+	</div>
+
+	<script>
+		var p1 = $('#p1')
+
+		p1.on('click', function () {
+			alert('灰')
+		})
+
+
+		var p2 = $('#p2')
+		
+		// 有没有selector差别很大，会先走下面的
+		// p2上绑定事件click
+		p2.on('click', function (e) {
+			alert('绿')
+		})
+
+		// 在p2上点击都会触发事件，但只有目标是为#p3 或 #p4的时候才会触发回调
+		p2.on('click', '#p3, #p4', function (e) {
+			console.log(e)
+			alert('p2 委托')
+		})
+
+		var p3 = $('#p3')
+		p3.on('click', function () {
+			alert('红')
+		})
+
+		// 元素本身有事件 ，元素又要处理委托元素p3 、 p4的事件
+
+		// 那么事件的执行顺序就需要有个先后，jQuery要如何排序呢？ 也可以理解为 就近原则
+
+		// 先处理内部的委托事件，最后处理自身的绑定事件。
+	</script>
+</body>
+
+</html>

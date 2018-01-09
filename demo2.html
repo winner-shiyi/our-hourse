@@ -5,25 +5,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>demo-jq</title>
+	<title>抛出问题</title>
 	<style>
-		p {
-			background: yellow;
-			font-weight: bold;
-			cursor: pointer;
-			padding: 5px;
-		}
-
-		p.over {
-			background: #ccc;
-		}
-
-		span {
-			color: red;
-		}
+		*{padding:0;margin:0}
+		body{width:1000px;height:800px;padding-top: 100px;margin:0 auto;}
+		.parent{width:500px;height:500px;border: 1px solid red;padding: 20px;}
+		#btn{width: 100px;height: 40px;margin-top: 10px;font-size: 20px;}
+		.child{line-height:40px;}
 	</style>
-	<!-- <script src="./juqery1.0.js"></script> -->
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="./jquery-1.9.1.js"></script> 
+	<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 </head>
 
 <body>
@@ -44,10 +35,12 @@
 		// 	alert("我是你儿子")
 		// })
 
+		// click和bind函数只支持静态绑定，只能绑定给已经有的节点,，后期动态生成的节点不支持
+
 		// 第三种，也就是解决这个问题的方法
-		// $(".parent").on("click", ".child", () => {
-		// 	alert("我是你儿子");
-		// })
+		$(".parent").on("click", ".child", () => {
+			alert("我是你儿子");
+		})
 
 		$("#btn").click(() => {
 			$(".parent").append("<div class='child'>第" + (i++) + "个儿子</div>");
