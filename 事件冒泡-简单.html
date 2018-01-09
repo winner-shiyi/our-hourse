@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>demo-jq</title>
+	<style>
+		p {
+			background: yellow;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 5px;
+		}
+
+		p.over {
+			background: #ccc;
+		}
+
+		span {
+			color: red;
+		}
+	</style>
+	<!-- <script src="./juqery1.0.js"></script> -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+	<div class="wrap" style="width:500px;height: 300px;background: red;margin: 0 auto;">
+		<div class="cccc" style="width:300px;height: 200px;background: blue;margin: 0 auto;">
+			<div class="bbbb" style="width:100px;height: 100px;background: green;margin: 0 auto;">
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.wrap').click(() => {
+			alert('wrap')
+		})
+		$('.cccc').click((e) => {
+			// e.stopPropagation()
+			alert('cccc')
+		})
+		$('.bbbb').click(() => {
+			alert('bbbb')
+		})
+	</script>
+</body>
+
+</html>
