@@ -36,16 +36,15 @@
 
 		var p2 = $('#p2')
 		
-		// 有没有selector差别很大，会先走下面的
 		// p2上绑定事件click
 		p2.on('click', function (e) {
 			alert('绿')
 		})
 
-		// 在p2上点击都会触发事件，但只有目标是为#p3 或 #p4的时候才会触发回调
+		// p2上也有委托事件，click在p2上点击都会触发事件，但只有目标是为#p3 或 #p4的时候才会触发回调
 		p2.on('click', '#p3, #p4', function (e) {
 			console.log(e)
-			alert('p2 委托')
+			alert('p3 委托我的点击事件')
 		})
 
 		var p3 = $('#p3')
